@@ -562,13 +562,13 @@ import matplotlib.patches as mpatches
 
 for p in ax.patches:
     if isinstance(p, mpatches.Rectangle):  
-        count = int(p.get_height())
-        if count > 0:
-            ax.annotate(f'{count}',
-                        (p.get_x() + p.get_width() / 2., p.get_height()),
-                        ha='center', va='center', fontsize=9, color='black',
-                        xytext=(0, 5),
-                        textcoords='offset points')
+        ax.annotate(
+            f'{p.get_width() * 100:.2f}%',
+            (p.get_width(), p.get_y() + p.get_height() / 2),
+            ha='left', va='center',
+            xytext=(5, 0),
+            textcoords='offset points'
+        )
             
     plt.subplot(len(demographics_cols), 3, row_idx + 2)
     value_counts = df[col].value_counts()
