@@ -26,6 +26,7 @@ import seaborn as sns
 from matplotlib.ticker import FuncFormatter
 from IPython.display import display, Markdown
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.patches as mpatches
 
 # Statistical Analysis
 import scipy.stats as stats
@@ -585,14 +586,15 @@ for p in ax.patches:
     ax = sns.barplot(data=data, y=col, x='Churn', color='darkcyan', orient='h')
 
     for p in ax.patches:
-        if hasattr(p, "get_width"):  # hanya annotate barplot
-            ax.annotate(
+        if isinstance(p, mpatches.Rectangle):  # hanya annotate bar
+                ax.annotate(
                 f'{p.get_width() * 100:.2f}%',
                 (p.get_width(), p.get_y() + p.get_height() / 2),
                 ha='left', va='center',
                 xytext=(5, 0),
                 textcoords='offset points'
             )
+
 
     ax.axvline(x=overall_churn_rate, color='black', linestyle='--', label=f'Overall: {overall_churn_rate * 100:.2f}%')
     ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: '{:.0%}'.format(x)))
