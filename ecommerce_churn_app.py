@@ -561,7 +561,7 @@ for i, col in enumerate(demographics_cols):
 import matplotlib.patches as mpatches
 
 for p in ax.patches:
-    if isinstance(p, mpatches.Rectangle):  
+    if hasattr(p, mpatches.Rectangle):  
         ax.annotate(
             f'{p.get_width() * 100:.2f}%',
             (p.get_width(), p.get_y() + p.get_height() / 2),
