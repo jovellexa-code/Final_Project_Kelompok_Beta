@@ -54,3 +54,10 @@ try:
     st.write(f"Probabilitas Churn: {prediction_proba[0][1]:.2f}")
 except FileNotFoundError:
     st.error("Model belum ditemukan. Pastikan 'churn_model.pkl' ada di direktori yang sama.")
+
+
+import pickle
+
+with open("churn_model.pkl", "wb") as f:
+    pickle.dump(best_pipeline, f)
+
