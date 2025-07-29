@@ -54,7 +54,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
-from xgboost import XGBClassifier
 import lightgbm as lgb
 from lightgbm import LGBMClassifier
 
